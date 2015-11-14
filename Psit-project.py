@@ -23,3 +23,11 @@ def menu():
     menubar.add_cascade(label = "Creator", menu = menu_about)#add sub menu to menu
     window.config(menu = menubar)
 
+def bar_graph(data, value):
+    """create the bar graph form data"""
+    pos = arange(len(data))
+    pyplot.xticks(pos+0.4,data)
+    pyplot.bar(pos,value)
+    pyplot.show()
+
+main()
