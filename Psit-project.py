@@ -1,11 +1,11 @@
 """the data processing project PSIT 2015"""
 from matplotlib import pyplot
 from numpy import arange
-main_data = {"Resident":50 , "small company":300 , "medium company": 1000, "large company": 2345,"Government":200}
 
+data = {"res":1, "fac":20}
 def bar_graph(data, value):
     """create the bar graph form data"""
-    bar_width = 0.45
+    bar_width = 0.070
     pos = arange(len(data))
     pyplot.xticks(pos+0.25,data)
     pyplot.bar(pos,value, bar_width, color="lightgreen")
@@ -14,10 +14,19 @@ def bar_graph(data, value):
 def pie_chart(data, value):
     value = tuple(value)
     colors = ["grey", "gold", "lightskyblue", "lightcoral", "lightgreen"]
-    pyplot.pie(value, labels=data, colors=colors,
-            autopct="%1.1f%%", shadow=True, startangle=90)
+    pyplot.pie(value, labels=data, colors=colors, autopct="%1.1f%%", shadow = True)
     pyplot.axis("equal")
     pyplot.show()
-    
-#bar_graph(main_data.keys(), main_data.values())
-pie_chart(main_data.keys(), main_data.values())
+
+def main():
+    data = dict()
+    month = ["JAN", "FEB", "MAR", "APR", "MAY", "JUN","JUL", "AUG", "SEP", "OCT", "NOV", "DEC"]
+    with open("test-data.txt") as text:
+        for line in text:
+            temp_dic = dict()
+            sub_data = line.split(" ")
+            sub_data[0] = sub_data[0].replace("ï»¿", "")
+            sub_data[-1] = sub_data[-1].replace("\n", "")
+            data[sub_data[0]] = sub_data[1:]
+        print(data)
+main()
