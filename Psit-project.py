@@ -2,7 +2,6 @@
 from matplotlib import pyplot
 from numpy import arange
 
-data = {"res":1, "fac":20}
 def bar_graph(data, value):
     """create the bar graph form data"""
     bar_width = 0.070
@@ -21,12 +20,21 @@ def pie_chart(data, value):
 def main():
     data = dict()
     month = ["JAN", "FEB", "MAR", "APR", "MAY", "JUN","JUL", "AUG", "SEP", "OCT", "NOV", "DEC"]
-    with open("Siamrath.txt") as text:
+    word = ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j"]
+    with open("Data-2557.txt") as text:
         for line in text:
             temp_dic = dict()
             sub_data = line.split(" ")
             sub_data[0] = sub_data[0].replace("ï»¿", "")
             sub_data[-1] = sub_data[-1].replace("\n", "")
             data[sub_data[0]] = sub_data[1:]
-        print(data)
+    for i in month:
+        count = 0
+        temp = dict()
+        for j in word:
+            temp[j] = data[i][count]
+            count += 1
+        data[i] = temp
+    for i in month:
+        print(i, data[i])
 main()
