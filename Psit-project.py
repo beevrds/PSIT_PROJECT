@@ -21,7 +21,7 @@ def pie_chart(data, value):
 def main():
     data = dict()
     month = ["JAN", "FEB", "MAR", "APR", "MAY", "JUN","JUL", "AUG", "SEP", "OCT", "NOV", "DEC"]
-    with open("test-data.txt") as text:
+    with open("Siamrath.txt") as text:
         for line in text:
             temp_dic = dict()
             sub_data = line.split(" ")
