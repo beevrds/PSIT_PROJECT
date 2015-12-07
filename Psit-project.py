@@ -20,7 +20,9 @@ def pie_chart(data, value):
 def main():
     data = dict()
     month = ["JAN", "FEB", "MAR", "APR", "MAY", "JUN","JUL", "AUG", "SEP", "OCT", "NOV", "DEC"]
-    word = ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j"]
+    keyword = ["HOME", "SMEs", "MediumEnterprise", "BigEnterprise",\
+            "SpecificEnterprise", "Government", "TemporarilyElectricity",\
+            "UnitTem", "PublicElectricity", "UnitPub"]
     with open("Data-2557.txt") as text:
         for line in text:
             temp_dic = dict()
