@@ -33,7 +33,7 @@ def main():
     for i in month:
         count = 0
         temp = dict()
-        for j in word:
+        for j in keyword:
             temp[j] = data[i][count]
             count += 1
         data[i] = temp
