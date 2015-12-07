@@ -21,8 +21,8 @@ def main():
     data = dict()
     month = ["JAN", "FEB", "MAR", "APR", "MAY", "JUN","JUL", "AUG", "SEP", "OCT", "NOV", "DEC"]
     word = ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j"]
-    with open("Data-2557.txt") as text:
-        for line in text:
+    with open("Data-2557.txt") as file:
+        for line in file:
             temp_dic = dict()
             sub_data = line.split(" ")
             sub_data[0] = sub_data[0].replace("ï»¿", "")
