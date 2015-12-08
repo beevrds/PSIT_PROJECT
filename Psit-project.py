@@ -4,15 +4,15 @@ from numpy import arange
 
 def bar_graph(data, value):
     """create the bar graph form data"""
-    bar_width = 0.070
+    bar_width = 0.5
     pos = arange(len(data))
-    pyplot.xticks(pos+0.25,data)
-    pyplot.bar(pos,value, bar_width, color="lightgreen")
+    pyplot.xticks(pos+2,data)
+    pyplot.bar(pos+len(data), value, bar_width, color="lightskyblue")
     pyplot.show()
 
 def pie_chart(data, value):
     value = tuple(value)
-    colors = ["grey", "gold", "lightskyblue", "lightcoral", "lightgreen"]
+    colors = ["lightskyblue", "lightcoral", "lightgreen", "purple", "lightpink", "lightgrey", "cyan", "chocolate", "deeppink", "magenta"]
     pyplot.pie(value, labels=data, colors=colors, autopct="%1.1f%%", shadow = True)
     pyplot.axis("equal")
     pyplot.show()
@@ -23,18 +23,28 @@ def main():
     word = ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j"]
     with open("Data-2557.txt") as file:
         for line in file:
+            keyword = ["HOME", "SMEs", "MediumEnterprise", "BigEnterprise",\
+            "SpecificEnterprise", "Government", "TemporarilyElectricity",\
+            "UnitTem", "PublicElectricity", "UnitPub"]
+    with open("Data-2557.txt") as text:
+        for line in text:
             temp_dic = dict()
             sub_data = line.split(" ")
             sub_data[0] = sub_data[0].replace("ï»¿", "")
             sub_data[-1] = sub_data[-1].replace("\n", "")
-            data[sub_data[0]] = sub_data[1:]
+            temp_key = sub_data[0]
+            sub_data =  list(map(float, sub_data[1:]))
+            data[temp_key] = sub_data[0:]
     for i in month:
         count = 0
         temp = dict()
-        for j in word:
+        for j in keyword:
+
             temp[j] = data[i][count]
             count += 1
         data[i] = temp
     for i in month:
+        bar_graph(data[i].keys(), data[i].values())
+        #pie_chart(sorted(data[i].keys(), key = len), data[i].values())
         print(i, data[i])
 main()
