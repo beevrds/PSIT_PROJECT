@@ -2,32 +2,38 @@
 from matplotlib import pyplot
 from numpy import arange
 
-def bar_graph(data, value, month):
+def bar_graph(data, value, month, years):
     """create the bar graph form data"""
     bar_width = 0.5
     pos = arange(len(data))
     pyplot.xticks(pos+2,data)
     pyplot.bar(pos+len(data), value, bar_width, color="lightskyblue")
-    pyplot.title("Electric consume in   "+ str(month))
+    pyplot.title("Electric consume in   "+ str(month)+" "+str(years))
     pyplot.ylabel("Usage")
     pyplot.show()
 
-def pie_chart(data, value, month):
+def pie_chart(data, value, month, years):
     value = tuple(value)
     colors = ["lightskyblue", "lightcoral", "lightgreen", "purple", "lightpink", "lightgrey", "cyan", "chocolate", "deeppink", "magenta"]
     pyplot.pie(value, labels=data, colors=colors, autopct="%1.1f%%", shadow = True)
-    pyplot.title("Electric consume in   "+ str(month))
+    pyplot.title("Electric consume in   "+ str(month)+" "+str(years))
     pyplot.show()
 
 
 def main():
     #choose file text that you want to see it between 2557 and 2558
-    see_year = input()
+    #see_year = int(input("Enter the years: "))
     choose_file = "Data-2557.txt"
-    if see_year == 2557:
-        choose_file == "Data-2557.txt"
-    else:
-        choose_file == "Data-2558.txt"
+    while True:
+        see_year = int(input("Enter the years: "))
+        if see_year == 2557:
+            choose_file = "Data-2557.txt"
+            end = 12
+            break
+        elif see_year == 2558:
+            choose_file = "Data-2558.txt"
+            end = 10
+            break
     #read file text
     data = dict()
     month = ["JAN", "FEB", "MAR", "APR", "MAY", "JUN","JUL", "AUG", "SEP", "OCT", "NOV", "DEC"]
@@ -46,19 +52,18 @@ def main():
             temp_key = sub_data[0]
             sub_data =  list(map(float, sub_data[1:]))
             data[temp_key] = sub_data[0:]
-    for i in month:
+    for i in month[:end]:
         count = 0
         temp = dict()
         for j in keyword:
-
             temp[j] = data[i][count]
             count += 1
         data[i] = temp
     #JAN {'BigEnterprise': 1337.23, 'PublicElectricity': 33.68, 'SMEs': 491.02, 
         #'SpecificEnterprise': 132.37, 'HOME': 681.77, 'MediumEnterprise': 615.8,
         #'UnitPub': 3327.41, 'Government': 6.3, 'UnitTem': 3293.73, 'TemporarilyElectricity': 29.24}
-    for i in month:
-        bar_graph(data[i].keys(), data[i].values(), i)
-        pie_chart(sorted(data[i].keys(), key = len), data[i].values(), i)
+    for i in month[:end]:
+        bar_graph(data[i].keys(), data[i].values(), i, see_year-543)
+        pie_chart(sorted(data[i].keys(), key = len), data[i].values(), i, see_year-543)
         print(i, data[i])
 main()
