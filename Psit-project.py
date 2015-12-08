@@ -17,16 +17,25 @@ def pie_chart(data, value):
     pyplot.axis("equal")
     pyplot.show()
 
+
 def main():
+    #choose file text that you want to see it between 2557 and 2558
+    see_year = input()
+    choose_file = "Data-2557.txt"
+    if see_year == 2557:
+        choose_file == "Data-2557.txt"
+    else:
+        choose_file == "Data-2558.txt"
+    #read file text
     data = dict()
     month = ["JAN", "FEB", "MAR", "APR", "MAY", "JUN","JUL", "AUG", "SEP", "OCT", "NOV", "DEC"]
     word = ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j"]
-    with open("Data-2557.txt") as file:
+    with open(choose_file) as file:
         for line in file:
             keyword = ["HOME", "SMEs", "MediumEnterprise", "BigEnterprise",\
             "SpecificEnterprise", "Government", "TemporarilyElectricity",\
             "UnitTem", "PublicElectricity", "UnitPub"]
-    with open("Data-2557.txt") as text:
+    with open(choose_file) as text:
         for line in text:
             temp_dic = dict()
             sub_data = line.split(" ")
