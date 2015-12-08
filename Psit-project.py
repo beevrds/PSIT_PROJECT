@@ -2,19 +2,21 @@
 from matplotlib import pyplot
 from numpy import arange
 
-def bar_graph(data, value):
+def bar_graph(data, value, month):
     """create the bar graph form data"""
     bar_width = 0.5
     pos = arange(len(data))
     pyplot.xticks(pos+2,data)
     pyplot.bar(pos+len(data), value, bar_width, color="lightskyblue")
+    pyplot.title("Electric consume in   "+ str(month))
+    pyplot.ylabel("Usage")
     pyplot.show()
 
-def pie_chart(data, value):
+def pie_chart(data, value, month):
     value = tuple(value)
     colors = ["lightskyblue", "lightcoral", "lightgreen", "purple", "lightpink", "lightgrey", "cyan", "chocolate", "deeppink", "magenta"]
     pyplot.pie(value, labels=data, colors=colors, autopct="%1.1f%%", shadow = True)
-    pyplot.axis("equal")
+    pyplot.title("Electric consume in   "+ str(month))
     pyplot.show()
 
 
@@ -52,8 +54,11 @@ def main():
             temp[j] = data[i][count]
             count += 1
         data[i] = temp
+    #JAN {'BigEnterprise': 1337.23, 'PublicElectricity': 33.68, 'SMEs': 491.02, 
+        #'SpecificEnterprise': 132.37, 'HOME': 681.77, 'MediumEnterprise': 615.8,
+        #'UnitPub': 3327.41, 'Government': 6.3, 'UnitTem': 3293.73, 'TemporarilyElectricity': 29.24}
     for i in month:
-        bar_graph(data[i].keys(), data[i].values())
-        #pie_chart(sorted(data[i].keys(), key = len), data[i].values())
+        bar_graph(data[i].keys(), data[i].values(), i)
+        pie_chart(sorted(data[i].keys(), key = len), data[i].values(), i)
         print(i, data[i])
 main()
