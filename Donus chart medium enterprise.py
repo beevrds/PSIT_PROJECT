@@ -1,4 +1,4 @@
-'''Plot DONUT CHART : SMES Electricity 2557-2558'''
+'''Plot DONUT CHART : Medium Enterprise Electricity 2557-2558'''
 #Please download Plotly for Python
 import plotly.plotly as py
 import plotly.graph_objs as go
@@ -6,10 +6,10 @@ py.sign_in('VoradeeSantivarotai', 'xnznsvj4k1')
 fig = {
   "data": [
     {
-      "values": [6.609681240577212, 7.213008830497522, 8.365954124488475,\
-                 8.809632780529828, 9.588358819728622, 9.189774930002153,\
-                 8.683905879819081, 8.659810467370233, 8.528968339435709,\
-                 8.328801421494722, 8.441740254146026, 7.5803629119104015],
+      "values": [7.103475419760258, 7.373056810731024, 8.704698906309336,\
+                 7.963321242736761, 9.100246441456427, 8.85004445728202,\
+                 8.764106016429125, 8.606763689820598, 8.67712939306928,\
+                 8.539743241316526, 8.559930123396066, 7.757484257692587],
       "labels": [
         "JAN",
         "FEB",
@@ -25,16 +25,16 @@ fig = {
         "DEC",
       ],
       "domain": {"x": [0, .48]},
-      "name": "SME(2557)",
+      "name": "Medium Enterprise(2557)",
       "hoverinfo":"label+percent+name",
       "hole": .4,
       "type": "pie"
     },     
     {
-      "values": [8.114385071568291, 8.851647157450243, 9.925947775328344,\
-                 10.015990312664949, 11.073679634861987, 10.912068804918187,\
-                 10.541962927313937, 10.446952525848417, 10.22976371596237,\
-                 9.887602074083274],
+      "values": [8.67479260074637, 9.045694955298414, 10.404864821327893,\
+                 9.431632077751228, 10.90503933202674, 10.528767417510137,\
+                 10.69576073240798, 10.196123177705587, 10.120815099202622,\
+                 9.996509786023035],
       "labels": [
         "JAN",
         "FEB",
@@ -47,17 +47,17 @@ fig = {
         "SEP",
         "OCT",
       ],
-      "text":"SME(2558)",
+      "text":"Medium Enterprise(2558)",
       "textposition":"inside",
       "domain": {"x": [.52, 1]},
-      "name": "SME(2558)",
+      "name": "Medium Enterprise(2558)",
       "hoverinfo":"label+percent+name",
       "hole": .4,
       "type": "pie"
     },     
   ],
   "layout": {
-        "title":"SME Electricity 2557-2558",
+        "title":"Medium Enterprise Electricity 2557-2558",
         "annotations": [
             {
                 "font": {
@@ -81,24 +81,25 @@ fig = {
     }
 }
 
-url = py.plot(fig, filename='SME Electricity 2557-2558')
+url = py.plot(fig, filename='Medium Enterprise Electricity 2557-2558')
 
-def data_sme():
-    ##data of sme 2557
-    lis2557 = [491.02, 535.84, 621.49, 654.45, 712.30, 682.69, 645.11,\
-               643.32, 633.60, 618.73, 627.12, 563.13]
+
+def data_MediumEnterprise():
+    ##data of MediumEnterprise 2557
+    lis2557 = [615.80, 639.17, 754.61, 690.34, 788.90, 767.21, 759.76,\
+               746.12, 752.22, 740.31, 742.06, 672.496]
     percent2557 = []
     total2557 = sum(lis2557)
     for i in lis2557:
         percent2557.append((i/total2557)*100)
-    print(percent2557)
+    #print(percent2557)
 
-    ##data of sme 2558
-    lis2558 = [522.68, 570.17, 639.37, 645.17, 713.30, 702.89, 679.05,\
-               672.93, 658.94, 636.90]
+    ##data of MediumEnterprise 2558
+    lis2558 = [646.22, 673.85, 775.10, 702.60, 812.36, 784.33, 796.77,\
+               759.55, 753.94, 744.68]
     percent2558 = []
     total2558 = sum(lis2558)
     for i in lis2558:
         percent2558.append((i/total2558)*100)
-    print(percent2558)
-data_sme()
+    #print(percent2558)
+data_MediumEnterprise()
