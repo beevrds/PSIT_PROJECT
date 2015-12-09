@@ -4,7 +4,6 @@ from numpy import arange
 
 def bar_graph(data, value, month, years):
     """create the bar graph form data"""
-
     bar_width = len(data)*8000000
     pos = arange(len(data))*100000000
     pyplot.xticks(pos, data)
@@ -60,9 +59,6 @@ def main():
             temp[j] = data[i][count]
             count += 1
         data[i] = temp
-    #JAN {'BigEnterprise': 1337.23, 'PublicElectricity': 33.68, 'SMEs': 491.02, 
-        #'SpecificEnterprise': 132.37, 'HOME': 681.77, 'MediumEnterprise': 615.8,
-        #'UnitPub': 3327.41, 'Government': 6.3, 'UnitTem': 3293.73, 'TemporarilyElectricity': 29.24}
     for i in month[:end]:
         print(i, data[i])
         bar_graph(data[i].keys(), data[i].values(), i, see_year-543)
