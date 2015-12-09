@@ -2,21 +2,25 @@
 from matplotlib import pyplot
 from numpy import arange
 
+colors = ["crimson", "lightcoral", "lightgreen", "tomato", "mediumaquamarine",\
+          "chartreuse", "lightpink", "chocolate", "yellowgreen", "mediumorchid"]
+
 def bar_graph(data, value, month, years):
     """create the bar graph form data"""
-    bar_width = len(data)*8000000
-    pos = arange(len(data))*100000000
-    pyplot.xticks(pos, data)
-    pyplot.bar(pos+len(data), value, bar_width, color="lightskyblue")
-    pyplot.title("Electric consume in   "+ str(month)+" "+str(years))
+    bar_width = len(data)*0.5
+    pos = arange(len(data))*10
+    pyplot.xticks(pos+13, data)
+    pyplot.bar(pos+len(data), value, bar_width, color=colors)
+    pyplot.title("Electric consume in   "+ str(month)+" "+str(years)+"\n")
     pyplot.ylabel("Usage")
     pyplot.show()
 
 def pie_chart(data, value, month, years):
+    """create the pie chart from value"""
     value = tuple(value)
-    colors = ["lightskyblue", "lightcoral", "lightgreen", "purple", "lightpink", "lightgrey", "cyan", "chocolate", "deeppink", "magenta"]
     pyplot.pie(value, labels=data, colors=colors, autopct="%1.1f%%", shadow = True)
-    pyplot.title("Electric consume in   "+ str(month)+" "+str(years))
+    pyplot.title("Electric consume in   "+ str(month)+" "+str(years)+"\n\n")
+    pyplot.axis("equal")
     pyplot.show()
     
 def main():
@@ -37,11 +41,10 @@ def main():
     #read file text
     data = dict()
     month = ["JAN", "FEB", "MAR", "APR", "MAY", "JUN","JUL", "AUG", "SEP", "OCT", "NOV", "DEC"]
-    word = ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j"]
     with open(choose_file) as file:
         for line in file:
             keyword = ["HOME", "SMEs", "MediumEnterprise", "BigEnterprise",\
-            "SpecificEnterprise", "Government", "TemporarilyElectricity",\
+            "SpecificEnterprise", "Government", "TempElectric",\
             "UnitTem", "PublicElectricity", "UnitPub"]
     with open(choose_file) as text:
         for line in text:
