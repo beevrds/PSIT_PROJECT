@@ -4,9 +4,10 @@ from numpy import arange
 
 def bar_graph(data, value, month, years):
     """create the bar graph form data"""
-    bar_width = 0.5
-    pos = arange(len(data))
-    pyplot.xticks(pos+2,data)
+
+    bar_width = len(data)*8000000
+    pos = arange(len(data))*100000000
+    pyplot.xticks(pos, data)
     pyplot.bar(pos+len(data), value, bar_width, color="lightskyblue")
     pyplot.title("Electric consume in   "+ str(month)+" "+str(years))
     pyplot.ylabel("Usage")
@@ -18,14 +19,14 @@ def pie_chart(data, value, month, years):
     pyplot.pie(value, labels=data, colors=colors, autopct="%1.1f%%", shadow = True)
     pyplot.title("Electric consume in   "+ str(month)+" "+str(years))
     pyplot.show()
-
-
+    
 def main():
     #choose file text that you want to see it between 2557 and 2558
     #see_year = int(input("Enter the years: "))
     choose_file = "Data-2557.txt"
     while True:
-        see_year = int(input("Enter the years: "))
+        see_year = 2558
+        #see_year = int(input("Enter the year 2557 or year 2558: "))
         if see_year == 2557:
             choose_file = "Data-2557.txt"
             end = 12
@@ -63,7 +64,8 @@ def main():
         #'SpecificEnterprise': 132.37, 'HOME': 681.77, 'MediumEnterprise': 615.8,
         #'UnitPub': 3327.41, 'Government': 6.3, 'UnitTem': 3293.73, 'TemporarilyElectricity': 29.24}
     for i in month[:end]:
+        print(i, data[i])
         bar_graph(data[i].keys(), data[i].values(), i, see_year-543)
         pie_chart(sorted(data[i].keys(), key = len), data[i].values(), i, see_year-543)
-        print(i, data[i])
+
 main()
