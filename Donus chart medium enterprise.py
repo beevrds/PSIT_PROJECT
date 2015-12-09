@@ -10,20 +10,8 @@ fig = {
                  7.963321242736761, 9.100246441456427, 8.85004445728202,\
                  8.764106016429125, 8.606763689820598, 8.67712939306928,\
                  8.539743241316526, 8.559930123396066, 7.757484257692587],
-      "labels": [
-        "JAN",
-        "FEB",
-        "MAR",
-        "APR",
-        "MAY",
-        "JUN",
-        "JUL",
-        "AUG",
-        "SEP",
-        "OCT",
-        "NOV",
-        "DEC",
-      ],
+      "labels": ["JAN","FEB","MAR","APR","MAY", "JUN", "JUL", "AUG",\
+                 "SEP", "OCT", "NOV", "DEC" ],
       "domain": {"x": [0, .48]},
       "name": "Medium Enterprise(2557)",
       "hoverinfo":"label+percent+name",
