@@ -83,3 +83,23 @@ fig = {
 }
 
 url = py.plot(fig, filename='Home Electricity 2557-2558')
+
+def data_home():
+    ##data of home 2557
+    lis2557 = [681.77, 787.30, 967.41, 1122.78, 1209.22, 1127.63,\
+           1030.49, 1003.59, 986.90, 965.01, 971.29, 841.36]
+    percent2557 = []
+    total2557 = sum(lis2557)
+    for i in lis2557:
+        percent2557.append((i/total2557)*100)
+    #print(percent2557)
+
+    ##data of home 2558
+    lis2558 = [745.82, 853.60, 1017.89, 1100.93, 1216.77, 1178.44, 1091.09,\
+               1091.64, 1040.53, 1000.14]
+    percent2558 = []
+    total2558 = sum(lis2558)
+    for i in lis2558:
+        percent2558.append((i/total2558)*100)
+    #print(percent2558)
+data_home()
