@@ -23,18 +23,7 @@ fig = {
                  9.431632077751228, 10.90503933202674, 10.528767417510137,\
                  10.69576073240798, 10.196123177705587, 10.120815099202622,\
                  9.996509786023035],
-      "labels": [
-        "JAN",
-        "FEB",
-        "MAR",
-        "APR",
-        "MAY",
-        "JUN",
-        "JUL",
-        "AUG",
-        "SEP",
-        "OCT",
-      ],
+      "labels": ["JAN","FEB","MAR","APR","MAY","JUN","JUL","AUG","SEP","OCT"],
       "text":"Medium Enterprise(2558)",
       "textposition":"inside",
       "domain": {"x": [.52, 1]},
