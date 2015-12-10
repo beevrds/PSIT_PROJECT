@@ -12,15 +12,15 @@ def bar_graph(data, value, month, years):
     pos = arange(len(data))*10
     pyplot.xticks(pos+13, data)
     pyplot.bar(pos+len(data), value, bar_width, color=colors)
-    pyplot.title("Electric consume in   "+ str(month)+" "+str(years)+"\n")
-    pyplot.ylabel("Usage")
+    pyplot.title("Electric usage in   "+ str(month)+" "+str(years)+"\n")
+    pyplot.ylabel("Usage (Million Unit)")
     pyplot.show()
 
 def pie_chart(data, value, month, years):
     """create the pie chart from value"""
     value = tuple(value)
     pyplot.pie(value, labels=data, colors=colors, autopct="%1.1f%%", shadow = True)
-    pyplot.title("Electric consume in   "+ str(month)+" "+str(years)+"\n\n")
+    pyplot.title("Electric usage in   "+ str(month)+" "+str(years)+"\n\n")
     pyplot.axis("equal")
     pyplot.show()
 
@@ -77,7 +77,7 @@ def main():
         data[i] = temp
 
     ##check that show graph in month or years
-    month_year_chk = input("Show graph in month type M or shaw all month in years type Y: ").upper()
+    month_year_chk = input("Show graph in month type M or show in years type Y: ").upper()
     if month_year_chk == "M":
         choose_month(data, see_year)
     elif month_year_chk == "Y":
