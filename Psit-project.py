@@ -5,9 +5,12 @@ from numpy import arange
 colors = ["crimson", "lightcoral", "lightgreen", "tomato", "mediumaquamarine",\
           "chartreuse", "lightpink", "chocolate", "yellowgreen", "mediumorchid"]
 
+def compare_bar():
+    
+
+
 def bar_graph(data, value, month, years):
     """create the bar graph form data"""
-    
     bar_width = len(data)*0.5
     pos = arange(len(data))*10
     pyplot.xticks(pos+13, data)
@@ -88,6 +91,6 @@ def main():
                 bar_graph(data[i].keys(), data[i].values(), i, see_year-543)
         else:
             for i in month[:end]:
-                pie_chart(sorted(data[i].keys(), key = len), data[i].values(), i, see_year-543)
+                pie_chart(sorted(data[i].keys()), data[i].values(), i, see_year-543)
 
 main()
