@@ -22,14 +22,22 @@ def pie_chart(data, value, month, years):
     pyplot.title("Electric consume in   "+ str(month)+" "+str(years)+"\n\n")
     pyplot.axis("equal")
     pyplot.show()
+
+def choose_month(data, see_year):
+    ## show graph do you want with input
+    inp_month = input("Enter the month(JAN, FEB, MAR, APR, MAY, JUN, JUL, AUG, SEP, OCT, NOV, DEC): ").upper()
+    show_graph = input("What graph do you want to see pie chart(PIE) or bargraph(BAR): ").upper()
+    if show_graph == "BAR":
+        bar_graph(data[inp_month].keys(), data[inp_month].values(), inp_month, see_year-543)
+    else:
+        pie_chart(sorted(data[inp_month].keys(), key = len), data[inp_month].values(), inp_month, see_year-543)
     
 def main():
     #choose file text that you want to see it between 2557 and 2558
     #see_year = int(input("Enter the years: "))
     choose_file = "Data-2557.txt"
     while True:
-        see_year = 2558
-        #see_year = int(input("Enter the year 2557 or year 2558: "))
+        see_year = int(input("Enter the year 2557 or year 2558: "))
         if see_year == 2557:
             choose_file = "Data-2557.txt"
             end = 12
@@ -55,6 +63,7 @@ def main():
             temp_key = sub_data[0]
             sub_data =  list(map(float, sub_data[1:]))
             data[temp_key] = sub_data[0:]
+    ##save data in dic
     for i in month[:end]:
         count = 0
         temp = dict()
@@ -62,9 +71,19 @@ def main():
             temp[j] = data[i][count]
             count += 1
         data[i] = temp
-    for i in month[:end]:
-        print(i, data[i])
-        bar_graph(data[i].keys(), data[i].values(), i, see_year-543)
-        pie_chart(sorted(data[i].keys(), key = len), data[i].values(), i, see_year-543)
+
+    ##check that show graph in month or years
+    month_year_chk = input("Show graph in month type M or shaw all month in years type Y: ").upper()
+    if month_year_chk == "M":
+        choose_month(data, see_year)
+    elif month_year_chk == "Y":
+        ## show all graph in the years
+        show_graph = input("What graph do you want to see pie chart(PIE) or bargraph(BAR): ").upper()
+        if show_graph == "BAR":
+            for i in month[:end]:
+                bar_graph(data[i].keys(), data[i].values(), i, see_year-543)
+        else:
+            for i in month[:end]:
+                pie_chart(sorted(data[i].keys(), key = len), data[i].values(), i, see_year-543)
 
 main()
