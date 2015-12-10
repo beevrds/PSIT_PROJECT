@@ -7,6 +7,7 @@ colors = ["crimson", "lightcoral", "lightgreen", "tomato", "mediumaquamarine",\
 
 def bar_graph(data, value, month, years):
     """create the bar graph form data"""
+    
     bar_width = len(data)*0.5
     pos = arange(len(data))*10
     pyplot.xticks(pos+13, data)
@@ -25,7 +26,10 @@ def pie_chart(data, value, month, years):
 
 def choose_month(data, see_year):
     ## show graph do you want with input
-    inp_month = input("Enter the month(JAN, FEB, MAR, APR, MAY, JUN, JUL, AUG, SEP, OCT, NOV, DEC): ").upper()
+    if see_year == 2558:
+        inp_month = input("Enter the month(JAN, FEB, MAR, APR, MAY, JUN, JUL, AUG, SEP, OCT): ").upper()
+    else:
+        inp_month = input("Enter the month(JAN, FEB, MAR, APR, MAY, JUN, JUL, AUG, SEP, OCT, NOV, DEC): ").upper()
     show_graph = input("What graph do you want to see pie chart(PIE) or bargraph(BAR): ").upper()
     if show_graph == "BAR":
         bar_graph(data[inp_month].keys(), data[inp_month].values(), inp_month, see_year-543)
