@@ -5,9 +5,38 @@ from numpy import arange
 colors = ["crimson", "lightcoral", "lightgreen", "tomato", "mediumaquamarine",\
           "chartreuse", "lightpink", "chocolate", "yellowgreen", "mediumorchid"]
 
-def compare_bar():
-    
+def autolabel(rects):
+    # attach some text labels
+    for rect in rects:
+        height = rect.get_height()
 
+def compare_bar(data, num_month):
+    num_month = int(num_month)
+    save_data = [0]*num_month
+    this_data = dict()
+    for i in range(num_month):
+        choose_month = input("Enter month: ").upper()
+        this_data[choose_month] = data[choose_month]
+##    print(this_data)
+    temp_ind = 0
+    for i in this_data:
+        save_data[temp_ind] = tuple(this_data[i].values())
+        temp_ind += 1
+    print(save_data)
+    
+    width = 0.35
+    ind = arange(num_month)
+    fig, ax = pyplot.subplots()
+    ax.set_ylabel("Usage")
+    ax.set_title('Scores by group and gender')
+    ax.set_xticks(ind + width)
+    ax.set_xticklabels(tuple(data.keys()))
+    val_list = list()
+    for i in range(num_month):
+        rect = ax.bar(ind, save_data[i], width, color=colors[i])
+        autolabel(rect)
+        ax.legend((rect[0]),('Women'))
+    pyplot.show()
 
 def bar_graph(data, value, month, years):
     """create the bar graph form data"""
@@ -78,19 +107,24 @@ def main():
             temp[j] = data[i][count]
             count += 1
         data[i] = temp
-
-    ##check that show graph in month or years
-    month_year_chk = input("Show graph in month type M or show in years type Y: ").upper()
-    if month_year_chk == "M":
-        choose_month(data, see_year)
-    elif month_year_chk == "Y":
-        ## show all graph in the years
-        show_graph = input("What graph do you want to see pie chart(PIE) or bargraph(BAR): ").upper()
-        if show_graph == "BAR":
-            for i in month[:end]:
-                bar_graph(data[i].keys(), data[i].values(), i, see_year-543)
-        else:
-            for i in month[:end]:
-                pie_chart(sorted(data[i].keys()), data[i].values(), i, see_year-543)
+    ## check compare or show
+    temp = input("Compare(C) data or show data(S)").upper()
+    if temp == "C":
+        number = input("Enter number of month: ")
+        compare_bar(data, number)
+    else:
+        ##check that show graph in month or years
+        month_year_chk = input("Show graph in month type M or show in years type Y: ").upper()
+        if month_year_chk == "M":
+            choose_month(data, see_year)
+        elif month_year_chk == "Y":
+            ## show all graph in the years
+            show_graph = input("What graph do you want to see pie chart(PIE) or bargraph(BAR): ").upper()
+            if show_graph == "BAR":
+                for i in month[:end]:
+                    bar_graph(data[i].keys(), data[i].values(), i, see_year-543)
+            else:
+                for i in month[:end]:
+                    pie_chart(sorted(data[i].keys()), data[i].values(), i, see_year-543)
 
 main()
