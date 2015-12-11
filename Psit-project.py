@@ -1,7 +1,7 @@
 """the data processing project PSIT 2015"""
 from matplotlib import pyplot
 from numpy import arange
-
+from random import randrange
 colors = ["crimson", "lightcoral", "lightgreen", "tomato", "mediumaquamarine",\
           "chartreuse", "lightpink", "chocolate", "yellowgreen", "mediumorchid"]
 
@@ -40,8 +40,9 @@ def compare_bar(data, num_month):
     val_for_plot = [0]*num_month
     
     for i in range(num_month):
-        val_for_plot[i] = ax.bar(ind, save_data[i], width, color=colors[i])
-        ax.bar(ind, save_data[i], width, color=colors[i])
+        col_ind = randrange(0, len(colors))
+        val_for_plot[i] = ax.bar(ind, save_data[i], width, color=colors[col_ind])
+        ax.bar(ind, save_data[i], width, color=colors[col_ind])
         ind = ind+width
         
     ax.legend(val_for_plot, tuple(this_data.keys()))
