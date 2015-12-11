@@ -34,7 +34,7 @@ def compare_bar(data, num_month):
     
     #for i in range(num_month):
     rect1 = ax.bar(ind, save_data[0], width, color=colors[0])
-    rect2 = ax.bar(ind+width, save_data[0], width, color=colors[1])
+    rect2 = ax.bar(ind+width, save_data[1], width, color=colors[1])
 ##    rect3 = ax.bar(ind+width, save_data[0], width, color=colors[2])
 ##    rect4 = ax.bar(ind+width, save_data[0], width, color=colors[3])
 ##    rect5 = ax.bar(ind+width, save_data[0], width, color=colors[4])
