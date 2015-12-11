@@ -66,7 +66,7 @@ def bar_graph(data, value, month, years):
     bar_width = len(data)*0.5
     pos = arange(len(data))*10
     pyplot.xticks(pos+13, data)
-    pyplot.bar(pos+len(data), value, bar_width, color=colors)
+    pyplot.bar(pos+len(data), value, bar_width, color=colors[:10])
     pyplot.title("Electric usage in   "+ str(month)+" "+str(years)+"\n")
     pyplot.ylabel("Usage (Million Unit)")
     pyplot.show()
