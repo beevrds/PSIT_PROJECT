@@ -14,9 +14,17 @@ def compare_bar(data, num_month):
     num_month = int(num_month)
     save_data = [0]*num_month#all value
     this_data = dict()
+    text_month = ""#title of graph
+    
+    ##set title graph
     for i in range(num_month):
         choose_month = input("Enter month: ").upper()
+        if i+1 == num_month:
+            text_month += choose_month +" "
+        else:
+            text_month += choose_month +", "
         this_data[choose_month] = data[choose_month]
+        
 ##    print(this_data)
     temp_ind = 0
     for i in this_data:
@@ -28,32 +36,32 @@ def compare_bar(data, num_month):
     ind = arange(len(save_data[0]))
     fig, ax = pyplot.subplots()
     ax.set_ylabel("Usage")
-    ax.set_title('Scores by group and gender')
+    ax.set_title("Compare month "+ text_month)
     ax.set_xticks(ind + width)
-    ax.set_xticklabels(tuple(data.keys()))
+    ax.set_xticklabels(tuple(data[choose_month].keys()))
     
     #for i in range(num_month):
     rect1 = ax.bar(ind, save_data[0], width, color=colors[0])
     rect2 = ax.bar(ind+width, save_data[1], width, color=colors[1])
-##    rect3 = ax.bar(ind+width, save_data[0], width, color=colors[2])
-##    rect4 = ax.bar(ind+width, save_data[0], width, color=colors[3])
-##    rect5 = ax.bar(ind+width, save_data[0], width, color=colors[4])
-##    rect6 = ax.bar(ind+width, save_data[0], width, color=colors[5])
-##    rect7 = ax.bar(ind+width, save_data[0], width, color=colors[6])
-##    rect8 = ax.bar(ind+width, save_data[0], width, color=colors[7])
-##    rect9 = ax.bar(ind+width, save_data[0], width, color=colors[8])
-##    rect10 = ax.bar(ind+width, save_data[0], width, color=colors[9])
-    ax.legend((rect1[0], rect2[0]))#, rect3[0], rect4[0], rect5[0], rect6[0], rect7[0], rect8[0], rect9[0], rect10[0]),(data.keys()))
+    rect3 = ax.bar(ind+width, save_data[0], width, color=colors[2])
+    rect4 = ax.bar(ind+width, save_data[0], width, color=colors[3])
+    rect5 = ax.bar(ind+width, save_data[0], width, color=colors[4])
+    rect6 = ax.bar(ind+width, save_data[0], width, color=colors[5])
+    rect7 = ax.bar(ind+width, save_data[0], width, color=colors[6])
+    rect8 = ax.bar(ind+width, save_data[0], width, color=colors[7])
+    rect9 = ax.bar(ind+width, save_data[0], width, color=colors[8])
+    rect10 = ax.bar(ind+width, save_data[0], width, color=colors[9])
+    ax.legend((rect1[0], rect2[0], rect3[0], rect4[0], rect5[0], rect6[0], rect7[0], rect8[0], rect9[0], rect10[0]),tuple(data[choose_month].keys()))
     autolabel(rect1)
     autolabel(rect2)
-##    autolabel(rect3)
-##    autolabel(rect4)
-##    autolabel(rect5)
-##    autolabel(rect6)
-##    autolabel(rect7)
-##    autolabel(rect8)
-##    autolabel(rect9)
-##    autolabel(rect10)
+    autolabel(rect3)
+    autolabel(rect4)
+    autolabel(rect5)
+    autolabel(rect6)
+    autolabel(rect7)
+    autolabel(rect8)
+    autolabel(rect9)
+    autolabel(rect10)
     pyplot.show()
 
 def bar_graph(data, value, month, years):
