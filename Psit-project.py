@@ -11,22 +11,30 @@ def autolabel(rects):
     for rect in rects:
         height = rect.get_height()
 
-def compare_bar(data, num_month):
+def compare_bar(data, num_month, year):
     num_month = int(num_month)
     save_data = [0]*num_month#all value
     this_data = dict()
     text_month = ""#title of graph
-    
     ##set title graph
+    if year == 2558:
+        temp_str = "Enter the month(JAN, FEB, MAR, APR, MAY, JUN, JUL, AUG, SEP, OCT)"
+    else:
+        temp_str = "Enter the month(JAN, FEB, MAR, APR, MAY, JUN, JUL, AUG, SEP, OCT, NOV, DEC)"
+        
     for i in range(num_month):
-        choose_month = input("Enter month: ").upper()
+        choose_month = input(temp_str).upper()
+        if choose_month == "DEC":
+            temp_str = temp_str.replace(choose_month, "")
+        if choose_month == "OCT":
+            temp_str = temp_str.replace(choose_month, "")
+        temp_str = temp_str.replace(choose_month+", ", "")
         if i+1 == num_month:
             text_month += choose_month +" "
         else:
             text_month += choose_month +", "
         this_data[choose_month] = data[choose_month]
         
-##    print(this_data)
     temp_ind = 0
     for i in this_data:
         save_data[temp_ind] = list(this_data[i].values())
@@ -126,7 +134,7 @@ def main():
     temp = input("Compare(C) data or show data(S)").upper()
     if temp == "C":
         number = input("Enter number of month: ")
-        compare_bar(data, number)
+        compare_bar(data, number, see_year)
     else:
         ##check that show graph in month or years
         month_year_chk = input("Show graph in month type M or show in years type Y: ").upper()
