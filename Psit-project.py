@@ -3,7 +3,8 @@ from matplotlib import pyplot
 from numpy import arange
 from random import randrange
 colors = ["crimson", "lightcoral", "lightgreen", "tomato", "mediumaquamarine",\
-          "chartreuse", "lightpink", "chocolate", "yellowgreen", "mediumorchid"]
+          "chartreuse", "lightpink", "chocolate", "yellowgreen", "mediumorchid",\
+          "peru", "lime", "olive", "mistyrose", "slategrat"]
 
 def autolabel(rects):
     # attach some text labels
@@ -38,9 +39,13 @@ def compare_bar(data, num_month):
     ax.set_xticks(ind + width)
     ax.set_xticklabels(tuple(data[choose_month].keys()))
     val_for_plot = [0]*num_month
-    
+    used_col= list()
     for i in range(num_month):
         col_ind = randrange(0, len(colors))
+        while col_ind in used_col:
+            col_ind = randrange(0, len(colors))
+        used_col.append(col_ind)
+        
         val_for_plot[i] = ax.bar(ind, save_data[i], width, color=colors[col_ind])
         ax.bar(ind, save_data[i], width, color=colors[col_ind])
         ind = ind+width
