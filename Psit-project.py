@@ -30,7 +30,7 @@ def compare_bar(data, num_month):
     for i in this_data:
         save_data[temp_ind] = list(this_data[i].values())
         temp_ind += 1
-    width = 0.35
+    width = 0.75/num_month
     ind = arange(len(save_data[0]))
     fig, ax = pyplot.subplots()
     ax.set_ylabel("Usage")
