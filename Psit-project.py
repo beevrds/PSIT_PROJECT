@@ -42,7 +42,7 @@ def compare_bar(data, num_month, year):
     width = 0.75/num_month
     ind = arange(len(save_data[0]))
     fig, ax = pyplot.subplots()
-    ax.set_ylabel("Usage")
+    ax.set_ylabel("MEA's Energy Sales (Million Unit)")
     ax.set_title("Compare month "+ text_month)
     ax.set_xticks(ind + width)
     ax.set_xticklabels(tuple(data[choose_month].keys()))
@@ -67,15 +67,15 @@ def bar_graph(data, value, month, years):
     pos = arange(len(data))*10
     pyplot.xticks(pos+13, data)
     pyplot.bar(pos+len(data), value, bar_width, color=colors[:10])
-    pyplot.title("Electric usage in   "+ str(month)+" "+str(years)+"\n")
-    pyplot.ylabel("Usage (Million Unit)")
+    pyplot.title("Electric Sale in   "+ str(month)+" "+str(years)+"\n")
+    pyplot.ylabel("MEA's Energy Sales (Million Unit)")
     pyplot.show()
 
 def pie_chart(data, value, month, years):
     """create the pie chart from value"""
     value = tuple(value)
     pyplot.pie(value, labels=data, colors=colors, autopct="%1.1f%%", shadow = True)
-    pyplot.title("Electric usage in   "+ str(month)+" "+str(years)+"\n\n")
+    pyplot.title("Electric Sale in   "+ str(month)+" "+str(years)+"\n\n")
     pyplot.axis("equal")
     pyplot.show()
 
