@@ -110,9 +110,9 @@ def main():
     month = ["JAN", "FEB", "MAR", "APR", "MAY", "JUN","JUL", "AUG", "SEP", "OCT", "NOV", "DEC"]
     with open(choose_file) as file:
         for line in file:
-            keyword = ["Resi dential", "Small General Service", "Medium General Service", "Large General Service",\
-            "Specific Business Service", "Government", "Temporary Tariff",\
-            "TOTAL", "Public Lightings", "TOTAL& Public Lightings"]
+            keyword = ["HOME", "SMEs", "MediumEnterprise", "BigEnterprise",\
+            "SpecificEnterprise", "Government", "TempElectric",\
+            "TOTAL", "PublicElectricity", "UnitPub"]
     with open(choose_file) as text:
         for line in text:
             temp_dic = dict()
