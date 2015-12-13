@@ -5,7 +5,8 @@ This program is part of PSIT project.
 Hold run this program and then when you want to know data that was analyzed you can print it. <br />
 Have 2 file that you can run it (Donus chart.py and Psit-project.py).
 #INSTALLING
-This program is wrote by [Python 3](https://www.python.org/download/releases/3.0/), [MATHPLOTLIB](http://matplotlib.org/users/installing.html), and [PLOTLY](https://plot.ly/python/getting-started/).<br />
+This program is wrote by [Python 3](https://www.python.org/download/releases/3.0/) <br /> 
+And use module namely [MATHPLOTLIB](http://matplotlib.org/users/installing.html), and [PLOTLY](https://plot.ly/python/getting-started/).<br />
 Please download text file and save at the same location with code
 #SUBMITTED BY
 -57070006 Kijtana Chayangsu <br />
