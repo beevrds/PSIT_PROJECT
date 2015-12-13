@@ -1,4 +1,11 @@
-"""the data processing project PSIT 2015"""
+"""the data processing project PSIT 2015
+Electric sale in year 2557and year 2558 by
+57070006 Kijtana Chayangsu
+57070015 Jakkraphatara Kaewthong
+57070101 Voradee Santivarotai
+57070121 Siamrath Supavakul
+"""
+
 from matplotlib import pyplot
 from numpy import arange
 from random import randrange
@@ -7,11 +14,13 @@ colors = ["crimson", "lightcoral", "lightgreen", "tomato", "mediumaquamarine",\
           "peru", "lime", "olive", "mistyrose", "slategrat"]
 
 def autolabel(rects):
+    """set label for campare graph"""
     # attach some text labels
     for rect in rects:
         height = rect.get_height()
 
 def compare_bar(data, num_month, year):
+    """show graph of compare data upto 11 month in the same year"""
     num_month = int(num_month)
     save_data = [0]*num_month#all value
     this_data = dict()
@@ -80,6 +89,7 @@ def pie_chart(data, value, month, years):
     pyplot.show()
 
 def choose_month(data, see_year):
+    """show the data in one month"""
     ## show graph do you want with input
     if see_year == 2558:
         inp_month = input("Enter the month(JAN, FEB, MAR, APR, MAY, JUN, JUL, AUG, SEP, OCT): ").upper()
@@ -92,6 +102,7 @@ def choose_month(data, see_year):
         pie_chart(sorted(data[inp_month].keys(), key = len), data[inp_month].values(), inp_month, see_year-543)
     
 def main():
+    """main of this program read data from txt file and use data for plot graph"""
     #choose file text that you want to see it between 2557 and 2558
     #see_year = int(input("Enter the years: "))
     choose_file = "Data-2557.txt"
@@ -105,7 +116,7 @@ def main():
             choose_file = "Data-2558.txt"
             end = 10
             break
-    #read file text
+    #read file text and save to dict
     data = dict()
     month = ["JAN", "FEB", "MAR", "APR", "MAY", "JUN","JUL", "AUG", "SEP", "OCT", "NOV", "DEC"]
     with open(choose_file) as file:
